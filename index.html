@@ -4,7 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Semilleros de Investigación — FMH-DAC-SOCEMI</title>
-    <meta name="description" content="Dashboard público de los grupos de semillero de investigación de la Facultad de Medicina Humana DAC, UNICA.">
+    <meta name="description" content="Grupos de semillero de investigación de la Facultad de Medicina Humana DAC, UNICA. Docentes, miembros y postulaciones en tiempo real.">
+    <meta name="theme-color" content="#1a3a5c">
+    <meta name="robots" content="index, follow">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+    <link rel="canonical" href="https://claudiomedina17.github.io/semillero-fmh-dac-unica/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Semilleros de Investigación — FMH-DAC-SOCEMI">
+    <meta property="og:description" content="Grupos de semillero de investigación de la FMH-DAC, UNICA. Docentes, miembros y postulaciones en tiempo real. Gestión 2026.">
+    <meta property="og:url" content="https://claudiomedina17.github.io/semillero-fmh-dac-unica/">
+    <meta property="og:locale" content="es_PE">
+    <meta property="og:site_name" content="Semilleros FMH-DAC-SOCEMI">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Semilleros de Investigación — FMH-DAC-SOCEMI">
+    <meta name="twitter:description" content="Dashboard público de los grupos de semillero. FMH-DAC, UNICA.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -41,20 +58,25 @@
 
     <div class="section-header">
         <h2>Grupos de Semillero</h2>
-        <a href="" id="btn-nuevo-grupo" class="btn btn-primary" target="_blank">Solicitar nuevo grupo</a>
+        <a href="" id="btn-nuevo-grupo" class="btn btn-primary" target="_blank" rel="noopener noreferrer">Solicitar nuevo grupo</a>
     </div>
 
     <div id="groups-container" class="groups-grid">
-        <div class="loading">
-            <div class="loading-spinner"></div>
+        <div class="loading" role="status" aria-label="Cargando grupos de semillero">
+            <div class="loading-spinner" aria-hidden="true"></div>
             <p>Cargando grupos...</p>
         </div>
+        <noscript>
+            <p style="text-align:center; padding:2rem; grid-column:1/-1;">
+                Este sitio necesita JavaScript para mostrar los grupos. Por favor, actívalo en tu navegador.
+            </p>
+        </noscript>
     </div>
 
     <section class="cta-section">
         <h3>¿Quieres formar tu propio grupo de semillero?</h3>
         <p>Si tienes un docente dispuesto a ser Docente Sembrador y un grupo de compañeros interesados, puedes solicitar el registro de un nuevo grupo.</p>
-        <a href="" id="btn-nuevo-grupo-footer" class="btn btn-outline" target="_blank">Solicitar registro de nuevo grupo</a>
+        <a href="" id="btn-nuevo-grupo-footer" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Solicitar registro de nuevo grupo</a>
     </section>
 </main>
 

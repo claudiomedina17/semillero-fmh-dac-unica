@@ -80,7 +80,7 @@ function createGroupCard(grupo, miembros) {
         }).join('');
 
         membersHTML = `
-            <button class="members-toggle" onclick="toggleMembers(this)">
+            <button class="members-toggle" onclick="toggleMembers(this)" aria-expanded="false">
                 Ver miembros (${totalMiembros})
             </button>
             <div class="members-list">
@@ -88,7 +88,7 @@ function createGroupCard(grupo, miembros) {
             </div>
         `;
     } else {
-        membersHTML = '<p style="font-size:0.85rem; color:var(--color-text-light);">Abierto a postulaciones</p>';
+        membersHTML = '<p style="font-size:0.85rem; color:var(--color-text-muted);">Abierto a postulaciones</p>';
     }
 
     const postularURL = buildPostularURL(grupo.grupo_id, grupo.docente_nombre);
@@ -115,7 +115,7 @@ function createGroupCard(grupo, miembros) {
                 <div class="field-label">Miembros</div>
                 ${membersHTML}
             </div>
-            <a href="${postularURL}" target="_blank" class="btn btn-outline btn-card">
+            <a href="${postularURL}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-card">
                 Postular a este grupo
             </a>
         </div>
@@ -142,7 +142,9 @@ function toggleMembers(btn) {
     const list = btn.nextElementSibling;
     list.classList.toggle('open');
     const count = list.querySelectorAll('.member-row').length;
-    btn.textContent = list.classList.contains('open')
+    const isOpen = list.classList.contains('open');
+    btn.textContent = isOpen
         ? `Ocultar miembros (${count})`
         : `Ver miembros (${count})`;
+    btn.setAttribute('aria-expanded', isOpen);
 }

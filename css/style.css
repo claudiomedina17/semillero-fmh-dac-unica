@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+/* Google Fonts loaded via <link> in HTML for performance */
 
 /* ============================================================
    CSS Custom Properties
@@ -10,7 +10,7 @@
     --color-bg:            #f5f6fa;
     --color-card:          #ffffff;
     --color-text:          #2c3e50;
-    --color-text-muted:    #6b7c93;
+    --color-text-muted:    #556270;
     --color-border:        #e0e4ed;
     --shadow-sm:           0 1px 4px rgba(0,0,0,0.08);
     --shadow-md:           0 4px 16px rgba(0,0,0,0.12);
@@ -273,7 +273,7 @@ a:hover {
 /* ============================================================
    Members Toggle
    ============================================================ */
-.btn-members-toggle {
+.members-toggle {
     width: 100%;
     background: transparent;
     border: 1.5px solid var(--color-border);
@@ -289,7 +289,7 @@ a:hover {
     font-family: inherit;
 }
 
-.btn-members-toggle:hover {
+.members-toggle:hover {
     background-color: var(--color-bg);
     border-color: var(--color-primary-light);
     color: var(--color-primary);
@@ -643,5 +643,65 @@ a:hover {
 
     .normativa-content {
         padding: 1.5rem 1.25rem;
+    }
+}
+
+/* ============================================================
+   Focus States — Accesibilidad WCAG 2.1 AA
+   ============================================================ */
+:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+.site-nav a:focus-visible {
+    outline-color: #ffffff;
+    background-color: rgba(255,255,255,0.18);
+}
+
+.btn:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 5px rgba(200, 164, 21, 0.25);
+}
+
+.members-toggle:focus-visible {
+    outline: 3px solid var(--color-primary-light);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   Print Styles
+   ============================================================ */
+@media print {
+    .site-nav, .cta-section, .btn, .btn-card, .loading,
+    .members-toggle, .site-footer, #btn-nuevo-grupo { display: none; }
+
+    .site-header {
+        background: none;
+        color: #000;
+        border-bottom: 2px solid #000;
+        padding: 1rem 0;
+    }
+
+    .site-header .subtitle { color: #333; opacity: 1; }
+
+    .group-card, .normativa-content, .stat {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+
+    .card-header {
+        background: none;
+        color: #000;
+        border-bottom: 1px solid #ccc;
+    }
+
+    body { font-size: 12pt; }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+        font-size: 0.8em;
+        color: #666;
     }
 }
