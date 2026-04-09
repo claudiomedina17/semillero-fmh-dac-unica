@@ -1,4 +1,4 @@
-# I Semillero de Investigación FMH-DAC-SOCEMI
+# I Semillero de Investigación FMH-DAC - 2026
 
 Dashboard público de los grupos de semillero de investigación de la Facultad de Medicina Humana Daniel Alcides Carrión, Universidad Nacional San Luis Gonzaga de Ica.
 
@@ -21,5 +21,4 @@ Los datos se cargan en tiempo real desde un Google Sheet publicado como CSV.
 
 ## Contacto
 
-Coordinación de Semilleros — CPC-Local SOCEMI
 Universidad Nacional San Luis Gonzaga de Ica
