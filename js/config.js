@@ -13,6 +13,11 @@ const CONFIG = {
         return `https://docs.google.com/spreadsheets/d/${this.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Postulaciones`;
     },
 
+    // Hojas de aprobación por grupo (creadas por setup_vistas_coordinadores.gs)
+    aprobacionesURL(grupoId) {
+        return `https://docs.google.com/spreadsheets/d/${this.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Aprobaciones_${grupoId}`;
+    },
+
     get SOLICITUDES_CSV_URL() {
         return `https://docs.google.com/spreadsheets/d/${this.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Solicitudes_Nuevo_Grupo`;
     },

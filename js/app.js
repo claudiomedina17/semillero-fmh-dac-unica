@@ -7,8 +7,8 @@ async function init() {
     const grupos = await loadGrupos();
     const miembros = await loadMiembros();
 
-    // Cargar postulaciones aprobadas y fusionar con miembros
-    const postulacionesAprobadas = await loadPostulacionesAprobadas();
+    // Cargar postulaciones aprobadas desde hojas por grupo y fusionar con miembros
+    const postulacionesAprobadas = await loadPostulacionesAprobadas(grupos);
     const todosLosMiembros = mergeMiembros(miembros, postulacionesAprobadas);
 
     // Cargar solicitudes de nuevos grupos aprobadas y fusionar con grupos
@@ -40,13 +40,34 @@ async function loadMiembros() {
     return data && data.length > 0 ? data : CONFIG.FALLBACK_MIEMBROS;
 }
 
-async function loadPostulacionesAprobadas() {
+async function loadPostulacionesAprobadas(grupos) {
     if (CONFIG.SHEET_ID === 'PENDING_SHEET_ID') return [];
-    const data = await fetchSheetCSV(CONFIG.POSTULACIONES_CSV_URL);
-    if (!data) return [];
-    return data.filter(function(row) {
-        return row.estado && row.estado.trim().toLowerCase() === 'aprobado';
+
+    // Leer hojas de aprobación por grupo en paralelo
+    var grupoIds = grupos.map(function(g) { return g.grupo_id; });
+    var promises = grupoIds.map(function(id) {
+        return fetchSheetCSV(CONFIG.aprobacionesURL(id));
     });
+
+    var results = await Promise.all(promises);
+    var aprobados = [];
+
+    results.forEach(function(data, index) {
+        if (!data) return;
+        data.forEach(function(row) {
+            if (row.estado && row.estado.trim().toLowerCase() === 'aprobado') {
+                aprobados.push({
+                    grupo_id: row.grupo_id || grupoIds[index],
+                    nombre: (row.nombre_postulante || '').trim(),
+                    ciclo: row.ciclo || '',
+                    fecha_ingreso: formatTimestamp(row.fecha_postulacion || ''),
+                    rol: 'Miembro'
+                });
+            }
+        });
+    });
+
+    return aprobados;
 }
 
 async function loadNuevosGruposAprobados() {
@@ -64,24 +85,15 @@ function mergeMiembros(miembrosBase, postulacionesAprobadas) {
     var merged = miembrosBase.slice();
 
     postulacionesAprobadas.forEach(function(p) {
-        // Extraer grupo_id del campo "Grupo al que postula" (formato: "G002 — Dr. Nombre")
-        var grupoId = extractGrupoId(p['Grupo al que postula'] || '');
-        if (!grupoId) return;
+        if (!p.grupo_id || !p.nombre) return;
 
-        // Evitar duplicados: si ya existe en miembros base, no agregar
-        var nombre = (p['Nombre completo'] || '').trim();
+        // Evitar duplicados
         var yaExiste = merged.some(function(m) {
-            return m.grupo_id === grupoId && m.nombre === nombre;
+            return m.grupo_id === p.grupo_id && m.nombre === p.nombre;
         });
         if (yaExiste) return;
 
-        merged.push({
-            grupo_id: grupoId,
-            nombre: nombre,
-            ciclo: p['Ciclo actual'] || '',
-            fecha_ingreso: formatTimestamp(p['Marca temporal'] || ''),
-            rol: 'Miembro'
-        });
+        merged.push(p);
     });
 
     return merged;
