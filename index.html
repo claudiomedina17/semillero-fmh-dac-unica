@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semilleros de Investigación — FMH-DAC-SOCEMI</title>
+    <meta name="description" content="Dashboard público de los grupos de semillero de investigación de la Facultad de Medicina Humana DAC, UNICA.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+    <h1>I Semillero de Investigación FMH-DAC-SOCEMI</h1>
+    <p class="subtitle">Universidad Nacional San Luis Gonzaga de Ica — Gestión 2026</p>
+</header>
+
+<nav class="site-nav">
+    <a href="index.html" class="active">Dashboard</a>
+    <a href="normativa.html">Marco Normativo</a>
+</nav>
+
+<main class="main">
+    <div class="stats-bar" id="stats-bar">
+        <div class="stat">
+            <div class="number" id="stat-grupos">—</div>
+            <div class="label">Grupos</div>
+        </div>
+        <div class="stat">
+            <div class="number" id="stat-docentes">—</div>
+            <div class="label">Docentes</div>
+        </div>
+        <div class="stat">
+            <div class="number" id="stat-miembros">—</div>
+            <div class="label">Miembros</div>
+        </div>
+        <div class="stat">
+            <div class="number" id="stat-cupos">—</div>
+            <div class="label">Cupos disponibles</div>
+        </div>
+    </div>
+
+    <div class="section-header">
+        <h2>Grupos de Semillero</h2>
+        <a href="" id="btn-nuevo-grupo" class="btn btn-primary" target="_blank">Solicitar nuevo grupo</a>
+    </div>
+
+    <div id="groups-container" class="groups-grid">
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <p>Cargando grupos...</p>
+        </div>
+    </div>
+
+    <section class="cta-section">
+        <h3>¿Quieres formar tu propio grupo de semillero?</h3>
+        <p>Si tienes un docente dispuesto a ser Docente Sembrador y un grupo de compañeros interesados, puedes solicitar el registro de un nuevo grupo.</p>
+        <a href="" id="btn-nuevo-grupo-footer" class="btn btn-outline" target="_blank">Solicitar registro de nuevo grupo</a>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <p>Coordinación de Semilleros — CPC-Local SOCEMI</p>
+    <p>Facultad de Medicina Humana Daniel Alcides Carrión — UNICA, Ica, Perú</p>
+    <p style="margin-top: 0.5rem;"><a href="normativa.html">Marco Normativo y Gobernanza</a></p>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/csv-parser.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
