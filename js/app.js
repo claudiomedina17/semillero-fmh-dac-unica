@@ -210,6 +210,15 @@ function createGroupCard(grupo, miembros) {
 
     var postularURL = buildPostularURL(grupo.grupo_id, grupo.docente_nombre);
 
+    var emailHTML = '';
+    if (grupo.docente_email && grupo.docente_email.trim()) {
+        emailHTML =
+            '<div class="card-field">' +
+                '<div class="field-label">Contacto docente</div>' +
+                '<div class="field-value"><a href="mailto:' + grupo.docente_email.trim() + '">' + grupo.docente_email.trim() + '</a></div>' +
+            '</div>';
+    }
+
     card.innerHTML =
         '<div class="card-header">' +
             '<div class="docente">' + grupo.docente_grado + ' ' + grupo.docente_nombre + '</div>' +
@@ -220,6 +229,7 @@ function createGroupCard(grupo, miembros) {
                 '<div class="field-label">Estado</div>' +
                 '<div class="field-value"><span class="badge ' + badgeClass + '">' + grupo.estado + '</span></div>' +
             '</div>' +
+            emailHTML +
             '<div class="card-field">' +
                 '<div class="field-label">Coordinador estudiantil</div>' +
                 '<div class="field-value">' + coordinadorText + '</div>' +
