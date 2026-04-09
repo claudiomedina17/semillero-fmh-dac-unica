@@ -1,5 +1,5 @@
 const CONFIG = {
-    SHEET_ID: 'PENDING_SHEET_ID',
+    SHEET_ID: '1Y0nci5dEqhwUsx1zWbdghd5l4lrkb_VLUlZtP38gJ8Y',
 
     get GRUPOS_CSV_URL() {
         return `https://docs.google.com/spreadsheets/d/${this.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Grupos`;
@@ -9,8 +9,8 @@ const CONFIG = {
         return `https://docs.google.com/spreadsheets/d/${this.SHEET_ID}/gviz/tq?tqx=out:csv&sheet=Miembros`;
     },
 
-    FORM_NUEVO_GRUPO: 'PENDING_FORM_URL',
-    FORM_POSTULAR: 'PENDING_FORM_URL',
+    FORM_NUEVO_GRUPO: 'https://docs.google.com/forms/d/e/1FAIpQLScctwO0rjbru4bI3XcKXCf7b42l3qwPwVoN2vrjtrve30we5g/viewform',
+    FORM_POSTULAR: 'https://docs.google.com/forms/d/e/1FAIpQLSfIntJ7RT_MRKvTzYumYTy9_nnrOuKRHUJbE4V37Yn83UX1yA/viewform',
     FORM_POSTULAR_ENTRY_GRUPO: 'entry.XXXXXXXXXX',
 
     FALLBACK_GRUPOS: [
