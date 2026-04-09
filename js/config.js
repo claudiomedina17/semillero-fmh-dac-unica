@@ -62,16 +62,15 @@ const CONFIG = {
             docente_nombre: 'Miranda Soberón Ubaldo Efrain',
             docente_grado: 'Dr.',
             linea_investigacion: 'General',
-            coordinador_nombre: 'Pineda Muñoz Luciana',
-            coordinador_ciclo: 'VI',
+            coordinador_nombre: '',
+            coordinador_ciclo: '',
             cupos_max: '20',
-            estado: 'En formación'
+            estado: 'Buscando coordinador'
         }
     ],
 
     FALLBACK_MIEMBROS: [
         { grupo_id: 'G002', nombre: 'Canchari Ramos Fabricio', ciclo: 'IX', fecha_ingreso: '2026-04-08', rol: 'Coordinador' },
         { grupo_id: 'G003', nombre: 'Bellido Cornejo Carlos Jesus', ciclo: 'VI', fecha_ingreso: '2026-04-08', rol: 'Coordinador' },
-        { grupo_id: 'G004', nombre: 'Pineda Muñoz Luciana', ciclo: 'VI', fecha_ingreso: '2026-04-08', rol: 'Coordinador' }
     ]
 };
